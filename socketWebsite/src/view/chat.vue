@@ -42,7 +42,7 @@
 </template>
 
 <script>
-  import store from '../store';
+  import { mapMutations } from 'vuex';
 export default {
   name: 'chat',
   data () {
@@ -54,26 +54,30 @@ export default {
       }
     }
   },
+  methods: {
+    ...mapMutations([
+    ]),
+    sendMessage(){
+      let msg = {
+        type:1,
+        fromUser:this.getUser().data.userId,
+        toUser:this.friendsDetails.userId,
+        msg:this.messageText,
+        sentTime:new Date().getTime()
+      };
+      store.state.socket.emit('socket/message',msg);
+    }
+  },
   mounted: function () {/*渲染前执行*/
-    let param = {userId: this.$route.params.userId};
+    let param = {
+      userId: this.$route.params.userId,
+      token: this.getUser().token
+    };
     this.api_searchUser(param).then((res) => {
       this.friendsDetails = res.data;
-      console.log(this.friendsDetails);
     });
 
   },
-  methods: {
-      sendMessage(){
-        let msg = {
-          type:1,
-          fromUser:store.state.user.data.userId,
-          toUser:this.friendsDetails.userId,
-          msg:this.messageText,
-          sentTime:new Date().getTime()
-        };
-        store.state.socket.emit('socket/message',msg);
-      }
-  }
 }
 </script>
 

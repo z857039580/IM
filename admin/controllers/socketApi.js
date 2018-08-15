@@ -15,16 +15,6 @@ function friendsList(socket,userId) {
     });
 };
 
-/*推送未读消息*/
-function unreadMsg(socket,userId) {
-    let userIsread = { toUser:userId,isRead:false};
-    Msg.msgFindAllIsread(userIsread).then(function(result){
-        socket.emit('socket/message',successInfo(3, result,'未读消息，通知'));
-    },function(err){
-        console.log(err);
-    });
-};
-
 /*推送消息*/
 function socketHandle(toSocket,fromSocket,msgData) {
     let msgContent = msgData;
@@ -39,21 +29,27 @@ function socketHandle(toSocket,fromSocket,msgData) {
     });
     msgSave.then(function (result) {
         if(msgContent.isRead == false){/*对方离线*/
-            if(msgContent.type == 1){
-                fromSocket.socket.emit('socket/message',successInfo(2, msgContent,'消息，通知'));
-            }
+            fromSocket.socket.emit('socket/message',successInfo(2, msgContent,'消息'));
         }else{/*对方在线*/
-            /*聊天发消息*/
-            if(msgContent.type == 1){
-                toSocket.socket.emit('socket/message',successInfo(2, msgContent,'消息，通知'));
-                fromSocket.socket.emit('socket/message',successInfo(2, msgContent,'消息，通知'));
-            }
+            toSocket.socket.emit('socket/message',successInfo(2, msgContent,'消息'));
+            fromSocket.socket.emit('socket/message',successInfo(2, msgContent,'消息'));
         }
     }).catch(function (err) {
         console.log("---------------保存信息失败");
         console.log(err);
     })
 }
+
+/*推送未读消息*/
+function unreadMsg(socket,userId) {
+    let userIsread = { toUser:userId,isRead:false};
+    Msg.msgFindAllIsread(userIsread).then(function(result){
+        socket.emit('socket/message',successInfo(3, result,'未读消息'));
+    },function(err){
+        console.log(err);
+    });
+};
+
 
 
 
@@ -83,7 +79,6 @@ module.exports = function (server) {
         });
 
         socket.on('socket/message',function (msgData) {
-            console.log(msgData);
             var toSocket = _.findWhere(sockeIdList,{userId:msgData.toUser});
             var fromSocket = _.findWhere(sockeIdList,{userId:msgData.fromUser});
             socketHandle(toSocket,fromSocket,msgData);

@@ -1,33 +1,47 @@
 <template>
-  <div id="loginAfter" class="loginAfter">
+  <div class="loginAfter">
     <router-view/>
   </div>
 </template>
 
 <script>
-  import store from '../store';
+  import { mapMutations } from 'vuex';
 export default {
   name: 'loginAfter',
+  data () {
+    return {
+      socket:'',
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'connectSocket',
+      'setListOfFriends',
+      'receiveMsg',
+    ])
+  },
   mounted: function () {
-      if(this.getUser()!=null){
+      const _this = this;
+      if(_this.getUser()!=null){
         /* 连接socket  接收socket信息*/
-        let socketUser = {userId: this.getUser().data.userId};
-        let socket = this.socketApi(socketUser);
-        store.commit('connectSocket',socket);
+        const socketUser = {userId: _this.getUser().data.userId};
+        const socket = _this.socketApi(socketUser);
+        _this.connectSocket(socket);
+
         socket.on('socket/message',function (res) {
           console.log("---------------------------------socket/message");
           console.log(res);
           switch(res.code)
           {
             case 1:/*好友列表*/
-              store.commit('setListOfFriends',res.data);
+              _this.setListOfFriends(res.data);
               break;
-            case 2:/*聊天消息*/
-              store.commit('receiveMsg',res.data);
+            case 2:/*消息*/
+              _this.receiveMsg(res.data);
               break;
             case 3:/*未读消息*/
               res.data.forEach((val,i)=>{
-                store.commit('receiveMsg', val);
+                _this.receiveMsg(val);
               });
               break;
             default:
