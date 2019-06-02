@@ -1,0 +1,216 @@
+@charset "UTF-8";
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre,
+form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0; }
+
+body, button, input, select, textarea {
+  font-family: arial; }
+
+h1, h2, h3, h4, h5, h6, p, b {
+  font-size: 100%;
+  font-weight: normal;
+  line-height: 1; }
+
+i, address, cite, dfn, em, var, b {
+  font-style: normal; }
+
+code, kbd, pre, samp {
+  font-family: courier new,courier,monospace; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+
+a:hover {
+  text-decoration: none;
+  color: inherit; }
+
+legend {
+  color: #000; }
+
+fieldset, img {
+  border: 0; }
+
+button, input, select, textarea {
+  font-size: 100%; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  outline: none;
+  padding: 0;
+  margin: 0; }
+
+html {
+  font-size: 20px; }
+
+/*聊天文字背景绿色*/
+/*详细资料背景*/
+/*聊天背景*/
+body {
+  font-size: 0.7rem;
+  color: #090d05; }
+
+.centerLeft {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+.centerTop {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.centerMid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%); }
+
+.bgImg {
+  /*background-image:url(images/bg33.jpg);*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+
+/* 加号弹窗*/
+.addPopover {
+  position: absolute !important;
+  min-width: 4.5rem !important;
+  top: 2rem !important;
+  right: 0.25rem;
+  background: #38383d !important;
+  margin-top: 1rem;
+  padding: 0.25rem 0.6rem !important; }
+  .addPopover .popper__arrow::after {
+    border-bottom-color: #38383d !important; }
+  .addPopover ul li {
+    color: #fff;
+    border-bottom: 1px solid #7b7e82;
+    line-height: 1;
+    padding: 10px 0;
+    text-align: left; }
+    .addPopover ul li:last-child {
+      border-bottom: none; }
+    .addPopover ul li svg {
+      margin-right: 10px; }
+
+.addIcon.el-popover__reference {
+  position: absolute;
+  right: 0.5rem;
+  font-size: 0.9rem; }
+
+/*main.vue 搜索框*/
+.searchBoxEldialog .el-dialog__header {
+  padding: 0; }
+  .searchBoxEldialog .el-dialog__header .el-dialog__headerbtn {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    padding: 0;
+    background: 0 0;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    font-size: 0.8rem; }
+.searchBoxEldialog .el-dialog__body {
+  padding: 0 0 1.5rem 0 !important;
+  background-color: #fff;
+  border-radius: 0.2rem; }
+  .searchBoxEldialog .el-dialog__body .dialogContent h2 {
+    text-align: center;
+    background-color: #d9d9d9;
+    line-height: 2.3;
+    border-radius: 0.2rem 0.2rem 0 0; }
+  .searchBoxEldialog .el-dialog__body .dialogContent .searchInput {
+    width: 92%;
+    margin: 1rem 4%; }
+  .searchBoxEldialog .el-dialog__body .dialogContent .unsearched {
+    text-align: center;
+    color: darkorange; }
+    .searchBoxEldialog .el-dialog__body .dialogContent .unsearched i {
+      margin-right: 0.4rem; }
+  .searchBoxEldialog .el-dialog__body .dialogContent ul {
+    margin: 0 4%; }
+    .searchBoxEldialog .el-dialog__body .dialogContent ul li .contactsInfo {
+      height: 2.5rem;
+      position: relative; }
+      .searchBoxEldialog .el-dialog__body .dialogContent ul li .contactsInfo span {
+        display: block; }
+      .searchBoxEldialog .el-dialog__body .dialogContent ul li .contactsInfo .avatarImg {
+        height: 2.5rem;
+        width: 2.5rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 0.2rem; }
+      .searchBoxEldialog .el-dialog__body .dialogContent ul li .contactsInfo .contacts {
+        padding-left: 3rem; }
+        .searchBoxEldialog .el-dialog__body .dialogContent ul li .contactsInfo .contacts h1 {
+          font-size: 0.75rem; }
+        .searchBoxEldialog .el-dialog__body .dialogContent ul li .contactsInfo .contacts p {
+          font-size: 0.7rem;
+          margin-top: 0.4rem;
+          color: #9b9b9b; }
+
+/*personal.vue 添加好友验证信息弹窗*/
+.addSendMsg {
+  background-color: #efeff4; }
+  .addSendMsg .el-dialog__header {
+    display: none; }
+  .addSendMsg .el-dialog__body {
+    padding: 0 !important; }
+    .addSendMsg .el-dialog__body .content .addSenHeader {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+      color: #fff;
+      background-color: #38383d;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      font-size: 0.9rem;
+      text-align: center; }
+      .addSendMsg .el-dialog__body .content .addSenHeader i {
+        position: absolute;
+        left: 0.5rem;
+        top: 0;
+        font-size: 0.9rem; }
+      .addSendMsg .el-dialog__body .content .addSenHeader b {
+        position: absolute;
+        right: 0.5rem;
+        top: 0;
+        font-size: 0.7rem;
+        line-height: 2.2rem; }
+    .addSendMsg .el-dialog__body .content h1 {
+      margin: 0.75rem 0.5rem 0.5rem 0.75rem; }
+    .addSendMsg .el-dialog__body .content .sendText {
+      border-top: #e2e2e2 1px solid;
+      border-bottom: #e2e2e2 1px solid;
+      padding: 0 0.75rem; }
+      .addSendMsg .el-dialog__body .content .sendText input {
+        border: none;
+        width: 100%;
+        height: 2.2rem;
+        background-color: #fff; }
+
+/*# sourceMappingURL=app.css.map */

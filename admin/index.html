@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./public/javascripts/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<h1>test</h1>
+
+<script>
+    $(document).ready(function () {
+
+        $.post("http://192.168.1.103:3001/v1/register",
+            {userName: 'zwd02', password: '123qwer'},
+            function (data) {
+                console.log(data);
+            });
+
+/*
+        $.post("http://192.168.1.103:3001/v1/updateUserInfo",
+            {
+                userName: 'zwd01',
+                password: '666',
+                nickname: '',
+                age: 6,
+                tel: 666666,
+            },
+            function (data) {
+                console.log(data);
+            });
+*/
+
+/*
+        $.post("http://192.168.1.103:3001/v1/login",
+            {
+                userName: 'zwd01',
+                password: '666',
+            },
+            function (data) {
+                console.log(data);
+            });
+*/
+
+
+
+
+
+    })
+
+</script>
+</body>
+</html>
