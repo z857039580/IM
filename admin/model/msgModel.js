@@ -57,7 +57,7 @@ messageModel.oldMsg = (param) => { return messageModel.findAll({
 //新建
 messageModel.msgCreate = (param) => { return messageModel.create(param);};
 
-// messageModel.drop();
+messageModel.drop();
 // messageModel.sync();
 module.exports = messageModel;
 

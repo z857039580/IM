@@ -51,7 +51,7 @@ const friendsModel = sequelizeDB.define('friends',
 friendsModel.friendsfindAll = function (param) { return friendsModel.findAll({ where: {userId: param.userId} });};
 
 
-// friendsModel.drop();
+friendsModel.drop();
 // friendsModel.sync();
 module.exports = friendsModel;
 

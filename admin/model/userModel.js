@@ -78,7 +78,7 @@ userModel.userCreate = function (param) {
 };
 
 
-// userModel.drop();
+userModel.drop();
 // userModel.sync();
 module.exports = userModel;
 
