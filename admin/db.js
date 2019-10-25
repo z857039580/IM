@@ -8,3 +8,4 @@ const sequelizeDB = new Sequelize('chat','admin','123456',
 
 exports.Sequelize = Sequelize;
 exports.sequelizeDB = sequelizeDB;
+
